@@ -38,4 +38,22 @@ Customer.prototype.statement = function () {
   result += "You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points";
   return result;
 };
+
+Customer.prototype.htmlStatement = function(){
+  var result = "<h1>Rental Record for " + this.getName() + "</h1>";
+  result += "<table>";
+
+  for (var index in _rentals) {
+    var each = _rentals[index];
+    //show figures for this rental
+    result += "<tr><td>" + each.getMovie().getTitle() + "</td><td>" + each.getCharge() + "</td></tr>";
+  }
+
+  //add footer lines result += "Amount
+  result += "<tr><td colspan='2'>Amount owed is " + this.getTotalCharge() + "</td></tr>";
+  result += "<tr><td colspan='2'>You earned " + this.getTotalFrequentRenterPoints() + " frequent renter points</td></tr>";
+  result += "</table>";
+  return result;
+};
+
 module.exports = Customer;
