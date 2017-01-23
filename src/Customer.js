@@ -19,7 +19,6 @@ Customer.prototype.statement = function () {
   var result = "Rental Record for " + this.getName() + "\n";
   for (var index in this._rentals) {
     var each = this._rentals[index];
-    var thisAmount = each.getCharge();
     // add frequent renter points
     frequentRenterPoints++;
     // add bonus for a two day new release rental
@@ -27,8 +26,8 @@ Customer.prototype.statement = function () {
       &&
       each.getDaysRented() > 1) frequentRenterPoints++;
     //show figures for this rental
-    result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-    totalAmount += thisAmount;
+    result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
+    totalAmount += each.getCharge();
   }
   //add footer lines result += "Amount
   result += "Amount owed is " + totalAmount + "\n";
