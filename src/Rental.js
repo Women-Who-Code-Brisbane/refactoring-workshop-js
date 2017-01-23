@@ -14,31 +14,10 @@ Rental.prototype.getMovie = function () {
 };
 
 Rental.prototype.getCharge = function () {
-  var result = 0;
-  //determine amounts for rental line
-  switch (this._movie.getPriceCode()) {
-    case Movie.REGULAR:
-      result += 2;
-      if (this._daysRented > 2)
-        result += (this._daysRented - 2) * 1.5;
-      break;
-    case Movie.NEW_RELEASE:
-      result += this._daysRented * 3;
-      break;
-    case Movie.CHILDRENS:
-      result += 1.5;
-      if (this._daysRented > 3)
-        result += (this._daysRented - 3) * 1.5;
-      break;
-  }
-  return result;
+  return this._movie.getCharge(this._daysRented);
 };
 
 Rental.prototype.getFrequentRenterPoints = function () {
-  if ((this._movie.getPriceCode() == Movie.NEW_RELEASE) && this._daysRented > 1) {
-    return 2;
-  } else {
-    return 1;
-  }
+  return this._movie.getFrequentRenterPoints(this._daysRented);
 };
 module.exports = Rental;
