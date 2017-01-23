@@ -1,6 +1,8 @@
+const Price = require("./Price");
+
 function Movie (title, priceCode) {
   this._title = title;
-  this._priceCode = priceCode;
+  this.setPriceCode(priceCode);
 }
 
 Movie.REGULAR = 0;
@@ -8,11 +10,23 @@ Movie.NEW_RELEASE = 1;
 Movie.CHILDRENS = 2;
 
 Movie.prototype.getPriceCode = function () {
-  return this._priceCode;
+  return this._price.getPriceCode();
 };
 
 Movie.prototype.setPriceCode = function (arg) {
-  this._priceCode = arg;
+  switch (arg) {
+    case Movie.REGULAR:
+      this._price = Price.regularPrice();
+      break;
+    case Movie.NEW_RELEASE:
+      this._price = Price.newReleasePrice();
+      break;
+    case Movie.CHILDRENS:
+      this._price = Price.childrensPrice();
+      break;
+    default:
+      throw("invalid price code");
+  }
 };
 
 Movie.prototype.getTitle = function () {
@@ -21,8 +35,7 @@ Movie.prototype.getTitle = function () {
 
 Movie.prototype.getCharge = function (daysRented) {
   var result = 0;
-  //determine amounts for rental line
-  switch (this._priceCode) {
+  switch (this.getPriceCode()) {
     case Movie.REGULAR:
       result += 2;
       if (daysRented > 2)
@@ -41,7 +54,7 @@ Movie.prototype.getCharge = function (daysRented) {
 };
 
 Movie.prototype.getFrequentRenterPoints = function (daysRented) {
-  if ((this._priceCode == Movie.NEW_RELEASE) && daysRented > 1) {
+  if ((this.getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1) {
     return 2;
   } else {
     return 1;
