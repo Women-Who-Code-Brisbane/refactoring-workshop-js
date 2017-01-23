@@ -13,33 +13,13 @@ Customer.prototype.getName = function () {
   return this._name;
 };
 
-function amountFor (rental) {
-  var result = 0;
-  //determine amounts for rental line
-  switch (rental.getMovie().getPriceCode()) {
-    case Movie.REGULAR:
-      result += 2;
-      if (rental.getDaysRented() > 2)
-        result += (rental.getDaysRented() - 2) * 1.5;
-      break;
-    case Movie.NEW_RELEASE:
-      result += rental.getDaysRented() * 3;
-      break;
-    case Movie.CHILDRENS:
-      result += 1.5;
-      if (rental.getDaysRented() > 3)
-        result += (rental.getDaysRented() - 3) * 1.5;
-      break;
-  }
-  return result;
-}
 Customer.prototype.statement = function () {
   var totalAmount = 0;
   var frequentRenterPoints = 0;
   var result = "Rental Record for " + this.getName() + "\n";
   for (var index in this._rentals) {
     var each = this._rentals[index];
-    var thisAmount = amountFor(each);
+    var thisAmount = each.getCharge();
     // add frequent renter points
     frequentRenterPoints++;
     // add bonus for a two day new release rental
