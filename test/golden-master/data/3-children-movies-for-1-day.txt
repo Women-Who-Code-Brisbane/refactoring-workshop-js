@@ -1,0 +1,6 @@
+Rental Record for Bob
+	A Children Movie	1.5
+	A Children Movie	1.5
+	A Children Movie	1.5
+Amount owed is 4.5
+You earned 3 frequent renter points

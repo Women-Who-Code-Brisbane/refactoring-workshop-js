@@ -1,0 +1,4 @@
+Rental Record for Dom
+	A Regular Movie	5
+Amount owed is 5
+You earned 1 frequent renter points

@@ -1,0 +1,4 @@
+Rental Record for Frank
+	A New Movie	27
+Amount owed is 27
+You earned 2 frequent renter points

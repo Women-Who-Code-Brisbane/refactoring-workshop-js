@@ -1,0 +1,7 @@
+Rental Record for Alice
+	A Regular Movie	2
+	A Regular Movie	2
+	A Regular Movie	2
+	A Regular Movie	2
+Amount owed is 8
+You earned 4 frequent renter points

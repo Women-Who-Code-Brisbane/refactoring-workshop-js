@@ -1,0 +1,4 @@
+Rental Record for Charlie
+	A New Movie	3
+Amount owed is 3
+You earned 1 frequent renter points

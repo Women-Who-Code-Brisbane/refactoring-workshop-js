@@ -1,0 +1,4 @@
+Rental Record for Erica
+	A Children Movie	6
+Amount owed is 6
+You earned 1 frequent renter points
