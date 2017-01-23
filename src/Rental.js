@@ -32,5 +32,13 @@ Rental.prototype.getCharge = function () {
       break;
   }
   return result;
-}
+};
+
+Rental.prototype.getFrequentRenterPoints = function () {
+  if ((this._movie.getPriceCode() == Movie.NEW_RELEASE) && this._daysRented > 1) {
+    return 2;
+  } else {
+    return 1;
+  }
+};
 module.exports = Rental;
